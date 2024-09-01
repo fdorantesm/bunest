@@ -176,6 +176,8 @@ dist
 
 .docker
 
+docs
+
 .env
 .env.*
 !.env.example

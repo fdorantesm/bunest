@@ -1,12 +1,12 @@
-import { Module } from "@nestjs/common";
-import { ConfigModule } from "@nestjs/config";
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 
-import { AppController } from "./app.controller";
-import { appConfig } from "./app.config";
-import { DatabaseModule } from "../infrastructure/database/database.module";
-import { RedisModule } from "../infrastructure/redis/redis.module";
-import { BullModule } from "@nestjs/bull";
-import { KafkaModule } from "../infrastructure/kafka/kafka.module";
+import { AppController } from './app.controller';
+import { appConfig } from './app.config';
+import { DatabaseModule } from '../infrastructure/database/database.module';
+import { RedisModule } from '../infrastructure/redis/redis.module';
+import { BullModule } from '@nestjs/bull';
+import { KafkaModule } from '../infrastructure/kafka/kafka.module';
 
 @Module({
   imports: [
@@ -16,15 +16,15 @@ import { KafkaModule } from "../infrastructure/kafka/kafka.module";
       load: [appConfig],
     }),
     BullModule.registerQueue({
-      name: "greetings",
+      name: 'greetings',
     }),
     RedisModule,
     KafkaModule,
   ],
   providers: [
     {
-      provide: "APP_NAME",
-      useValue: "Bunest",
+      provide: 'APP_NAME',
+      useValue: 'Bunest',
     },
   ],
   controllers: [AppController],

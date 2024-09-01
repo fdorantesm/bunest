@@ -1,11 +1,11 @@
-import { registerAs } from "@nestjs/config";
+import { registerAs } from '@nestjs/config';
 
 export const redisConfig = registerAs(
-  "redis",
+  'redis',
   (): RedisConfig => ({
-    host: process.env.REDIS_HOST || "localhost",
+    host: process.env.REDIS_HOST || 'localhost',
     port: parseInt(process.env.REDIS_PORT!, 10) || 6379,
-  })
+  }),
 );
 
 export type RedisConfig = {

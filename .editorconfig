@@ -1,0 +1,17 @@
+# Editorconfig
+root = true
+
+[*]
+charset = utf-8
+insert_final_newline = true
+end_of_line = lf
+indent_style = space
+trim_trailing_whitespace = true
+
+# yaml
+[*.{yml,yaml}]
+indent_size = 2
+
+# json
+[*.json]
+indent_size = 2

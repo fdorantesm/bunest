@@ -1,9 +1,9 @@
-import { Module } from "@nestjs/common";
-import { MongooseModule } from "@nestjs/mongoose";
-import { ConfigModule, ConfigService } from "@nestjs/config";
-import { ConnectionString } from "connection-string";
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConnectionString } from 'connection-string';
 
-import { databaseConfig } from "./database.config";
+import { databaseConfig } from './database.config';
 
 @Module({
   imports: [
@@ -12,10 +12,10 @@ import { databaseConfig } from "./database.config";
       inject: [ConfigService],
       useFactory: async () => {
         const config = databaseConfig();
-        const uri = new ConnectionString("", {
+        const uri = new ConnectionString('', {
           user: config.username,
           password: config.password,
-          protocol: config.port ? "mongodb" : "mongodb+srv",
+          protocol: config.port ? 'mongodb' : 'mongodb+srv',
           hosts: [{ name: config.host, port: config.port }],
         }).toString();
 

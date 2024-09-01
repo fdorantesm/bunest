@@ -1,8 +1,8 @@
-import { Module } from "@nestjs/common";
-import { ConfigModule, ConfigService } from "@nestjs/config";
-import { ClientsModule, Transport } from "@nestjs/microservices";
+import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ClientsModule, Transport } from '@nestjs/microservices';
 
-import { kafkaConfig, type KafkaConfig } from "./kafka.config";
+import { kafkaConfig, type KafkaConfig } from './kafka.config';
 
 @Module({
   imports: [
@@ -10,9 +10,9 @@ import { kafkaConfig, type KafkaConfig } from "./kafka.config";
       {
         imports: [ConfigModule.forFeature(kafkaConfig)],
         inject: [ConfigService],
-        name: "GREET_SERVICE",
+        name: 'GREET_SERVICE',
         useFactory: (configService: ConfigService) => {
-          const config = configService.getOrThrow<KafkaConfig>("kafka");
+          const config = configService.getOrThrow<KafkaConfig>('kafka');
           return {
             transport: Transport.KAFKA,
             options: {

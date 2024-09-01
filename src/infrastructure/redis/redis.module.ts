@@ -1,9 +1,9 @@
-import { BullModule } from "@nestjs/bull";
-import { Global, Module } from "@nestjs/common";
-import { ConfigModule, ConfigService } from "@nestjs/config";
+import { BullModule } from '@nestjs/bull';
+import { Global, Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
-import { redisConfig, type RedisConfig } from "./redis.config";
-import { GreetProcessor } from "./greet.process";
+import { redisConfig, type RedisConfig } from './redis.config';
+import { GreetProcessor } from './greet.process';
 
 @Global()
 @Module({
@@ -12,7 +12,7 @@ import { GreetProcessor } from "./greet.process";
       imports: [ConfigModule.forFeature(redisConfig)],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
-        const config = configService.getOrThrow<RedisConfig>("redis");
+        const config = configService.getOrThrow<RedisConfig>('redis');
         return {
           redis: {
             host: config.host,
@@ -22,7 +22,7 @@ import { GreetProcessor } from "./greet.process";
       },
     }),
     BullModule.registerQueue({
-      name: "greetings",
+      name: 'greetings',
     }),
   ],
   providers: [GreetProcessor],
